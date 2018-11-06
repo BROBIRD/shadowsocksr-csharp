@@ -123,6 +123,7 @@ namespace Shadowsocks.Controller
             {
                 if (Error != null)
                 {
+                    ServicePointManager.SecurityProtocol = (SecurityProtocolType)4032;
                     WebClient http = sender as WebClient;
                     if (http.BaseAddress.StartsWith(GFWLIST_URL))
                     {
@@ -181,6 +182,7 @@ namespace Shadowsocks.Controller
             if (gfwlist_template == null)
             {
                 lastConfig = config;
+                ServicePointManager.SecurityProtocol = (SecurityProtocolType)4032;
                 WebClient http = new WebClient();
                 WebProxy proxy = new WebProxy(IPAddress.Loopback.ToString(), config.localPort);
                 if (!string.IsNullOrEmpty(config.authPass))
@@ -193,6 +195,7 @@ namespace Shadowsocks.Controller
             }
             else
             {
+                ServicePointManager.SecurityProtocol = (SecurityProtocolType)4032;
                 WebClient http = new WebClient();
                 WebProxy proxy = new WebProxy(IPAddress.Loopback.ToString(), config.localPort);
                 if (!string.IsNullOrEmpty(config.authPass))
@@ -208,6 +211,7 @@ namespace Shadowsocks.Controller
 
         public void UpdatePACFromGFWList(Configuration config, string url)
         {
+            ServicePointManager.SecurityProtocol = (SecurityProtocolType)4032;
             WebClient http = new WebClient();
             WebProxy proxy = new WebProxy(IPAddress.Loopback.ToString(), config.localPort);
             if (!string.IsNullOrEmpty(config.authPass))

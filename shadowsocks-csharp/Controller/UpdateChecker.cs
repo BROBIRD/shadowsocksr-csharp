@@ -20,8 +20,8 @@ namespace Shadowsocks.Controller
         public event EventHandler NewVersionFound;
 
         public const string Name = "ShadowsocksR";
-        public const string Copyright = "Copyright © BreakWa11 2017. Fork from Shadowsocks by clowwindy";
-        public const string Version = "4.7.0";
+        public const string Copyright = "Copyright © BreakWa11 2017. Fork from Shadowsocks by clowwindy, Mod by BROBIRD";
+        public const string Version = "4.7.0.1";
 #if !_DOTNET_4_0
         public const string NetVer = "2.0";
 #elif !_CONSOLE
@@ -46,6 +46,7 @@ namespace Shadowsocks.Controller
         {
             try
             {
+                ServicePointManager.SecurityProtocol = (SecurityProtocolType)4032;
                 WebClient http = new WebClient();
                 http.Headers.Add("User-Agent", "Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.3319.102 Safari/537.36");
                 if (UseProxy)
